@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>À Propos de cette Plateforme</h2>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5>🎯 Objectif du Projet</h5>
+                <p>
+                    Cette plateforme interactive a été développée dans le cadre d'un projet de semestre 
+                    visant à démocratiser l'accès aux tests statistiques non paramétriques.
+                </p>
+                
+                <h5 class="mt-4">📊 Tests Implémentés</h5>
+                <ul>
+                    <li>Test de Wilcoxon pour données appariées</li>
+                    <li>Test de Mann-Whitney pour échantillons indépendants</li>
+                    <li>Test de Kruskal-Wallis pour comparaisons multiples</li>
+                    <li>Corrélation de Spearman</li>
+                    <li>Test de Friedman pour blocs randomisés</li>
+                </ul>
+                
+                <h5 class="mt-4">🛠️ Technologies Utilisées</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Backend:</strong>
+                        <ul>
+                            <li>Flask (Python)</li>
+                            <li>Pandas pour la manipulation des données</li>
+                            <li>SciPy pour les tests statistiques</li>
+                            <li>Matplotlib/Seaborn pour les visualisations</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Frontend:</strong>
+                        <ul>
+                            <li>HTML5/CSS3/JavaScript</li>
+                            <li>Bootstrap 5 pour le design</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4">👨‍🎓 Équipe de Développement</h5>
+                <p>Projet réalisé dans le cadre du cours de statistiques non paramétriques.</p>
+                
+                <div class="alert alert-info mt-4">
+                    <strong>Note pédagogique :</strong> Cette plateforme est conçue à des fins éducatives 
+                    et ne remplace pas l'expertise d'un statisticien professionnel.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

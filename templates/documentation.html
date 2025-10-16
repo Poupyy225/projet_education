@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h2>📚 Documentation des Tests</h2>
+        <p class="lead">Guide complet des tests non paramétriques implémentés</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Tests Disponibles</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Utilisation</th>
+                                <th>Hypothèses</th>
+                                <th>Interprétation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Wilcoxon</strong></td>
+                                <td>Données appariées, mesures répétées</td>
+                                <td>Distributions symétriques, données ordinales</td>
+                                <td>Compare les rangs des différences appariées</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mann-Whitney</strong></td>
+                                <td>Échantillons indépendants</td>
+                                <td>Distributions de forme similaire</td>
+                                <td>Compare les rangs entre deux groupes indépendants</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kruskal-Wallis</strong></td>
+                                <td>Plus de 2 groupes indépendants</td>
+                                <td>Distributions continues, indépendance</td>
+                                <td>Extension du test de Mann-Whitney pour k groupes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spearman</strong></td>
+                                <td>Correlation monotone</td>
+                                <td>Variables ordinales ou continues</td>
+                                <td>Mesure la force et la direction d'une relation monotone</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Friedman</strong></td>
+                                <td>Blocs randomisés, mesures répétées</td>
+                                <td>Blocs indépendants, données ordinales</td>
+                                <td>Compare les traitements dans des blocs randomisés</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4>Guide d'Interprétation des p-values</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <strong>p < 0.001</strong><br>
+                            Différence très significative
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <strong>p < 0.01</strong><br>
+                            Différence significative
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <strong>p < 0.05</strong><br>
+                            Différence significative au seuil de 5%
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-secondary">
+                            <strong>p ≥ 0.05</strong><br>
+                            Différence non significative
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

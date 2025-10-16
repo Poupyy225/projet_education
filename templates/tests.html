@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="p-4 rounded-4 border" style="background-color: var(--card-bg); border-color: var(--card-border) !important;">
+            <h2 class="mb-1">🧪 Interface des Tests Statistiques</h2>
+            <p class="mb-0 text-muted">Sélectionnez un test et exécutez l'analyse sur vos données.</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>1. Chargement des Données</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Utiliser les données d'exemple :</label>
+                    <button id="btnSampleData" class="btn btn-outline-primary w-100">
+                        Charger les Données d'Exemple
+                    </button>
+                </div>
+                
+                <hr>
+                
+                <div class="mb-3">
+                    <label class="form-label">Ou importer votre fichier CSV :</label>
+                    <input type="file" class="form-control" id="fileInput" accept=".csv">
+                    <button id="btnUpload" class="btn btn-outline-success mt-2 w-100">
+                        Importer le Fichier
+                    </button>
+                    <div class="form-text">Vos données restent locales à votre session.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>2. Sélection du Test</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Type de test :</label>
+                    <select class="form-select" id="testSelect">
+                        <option value="">Choisir un test...</option>
+                        <option value="wilcoxon">Test de Wilcoxon (Apparié)</option>
+                        <option value="mann_whitney">Test de Mann-Whitney (Indépendant)</option>
+                        <option value="kruskal_wallis">Test de Kruskal-Wallis (Multi-groupes)</option>
+                        <option value="spearman">Corrélation de Spearman</option>
+                        <option value="friedman">Test de Friedman (Blocs)</option>
+                    </select>
+                </div>
+                
+                <button id="btnRunTest" class="btn btn-primary w-100" disabled>
+                    Exécuter le Test
+                </button>
+                <div class="text-muted small mt-2">Choisissez d'abord le test pour activer le bouton.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Aperçu des Données</h5>
+            </div>
+            <div class="card-body">
+                <div id="dataPreview">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    {% for colonne in colonnes %}
+                                    <th>{{ colonne }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ligne in donnees %}
+                                <tr>
+                                    {% for colonne in colonnes %}
+                                    <td>{{ ligne[colonne] }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-muted">Données d'exemple chargées (90 observations)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5>Résultats du Test</h5>
+            </div>
+            <div class="card-body">
+                <div id="resultsContainer">
+                    <p class="text-muted text-center">
+                        Les résultats apparaîtront ici après exécution du test
+                    </p>
+                </div>
+                <div class="text-end mt-2">
+                    <button class="btn btn-outline-secondary btn-sm" onclick="showDetailedResults()">Voir les détails</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour les résultats détaillés -->
+<div class="modal fade" id="resultsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Résultats Détaillés</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modalResultsContent">
+                <!-- Contenu dynamique -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
